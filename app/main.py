@@ -1,12 +1,12 @@
 class Animal:
-    def __init__(self, name: str, appetite: int, is_hungry: bool = True):
+    def __init__(self, name: str, appetite: int, is_hungry: bool = True) -> None:
         if not isinstance(name, str):
             raise TypeError("name must be a string")
         if not isinstance(appetite, int):
             raise TypeError("appetite must be an integer")
         if not isinstance(is_hungry, bool):
             raise TypeError("is_hungry must be a boolean")
-        
+
         self.name = name
         self.appetite = appetite
         self.is_hungry = is_hungry
@@ -23,7 +23,7 @@ class Animal:
 
 
 class Cat(Animal):
-    def __init__(self, name: str, is_hungry: bool = True):
+    def __init__(self, name: str, is_hungry: bool = True) -> None:
         if not isinstance(name, str):
             raise TypeError("name must be a string")
         if not isinstance(is_hungry, bool):
@@ -36,7 +36,7 @@ class Cat(Animal):
 
 
 class Dog(Animal):
-    def __init__(self, name: str, is_hungry: bool = True):
+    def __init__(self, name: str, is_hungry: bool = True) -> None:
         if not isinstance(name, str):
             raise TypeError("name must be a string")
         if not isinstance(is_hungry, bool):
@@ -54,6 +54,8 @@ def feed_animals(animals: list[Animal]) -> int:
     total_food = 0
     for animal in animals:
         if not isinstance(animal, Animal):
-            raise TypeError("All elements in the list must be instances of Animal or its subclasses")
+            raise TypeError(
+                "All elements in the list must be instances of Animal or its subclasses"
+            )
         total_food += animal.feed()
     return total_food
